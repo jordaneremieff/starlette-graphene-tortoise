@@ -4,25 +4,32 @@ An example of a basic [Starlette](https://github.com/encode/starlette) app using
 
 ## Setup
 
+- Setup the dev environment and install the dependencies
 ```
-# Setup the dev environment and install the dependencies
 ./scripts/setup
+```
 
-# Activate the virtualenv
+- Activate the virtualenv
+```
 . venv/bin/activate
+```
 
-# Create the database
+- Create the database
+```
 python init_db.py
+```
 
 ## Running
 
-### From the virtualenv
+- From the virtualenv
 ```
 uvicorn myapp.app:app --debug
 ```
 
-### With docker
-```docker-compose up -d```
+- With docker
+```
+docker-compose up -d
+```
 
 
 ## GraphQL queries & mutations
