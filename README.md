@@ -2,6 +2,8 @@
 
 An example of a basic [Starlette](https://github.com/encode/starlette) app using [Tortoise ORM](https://github.com/tortoise/tortoise-orm) and [Graphene](https://github.com/graphql-python/graphene).
 
+**Requirements**: Python 3.6+
+
 ## Setup
 
 - Setup the dev environment and install the dependencies
