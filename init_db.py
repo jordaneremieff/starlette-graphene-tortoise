@@ -1,3 +1,4 @@
+import sys
 import os
 import contextlib
 
@@ -13,6 +14,18 @@ DB_MODELS = config("DB_MODELS", cast=CommaSeparatedStrings)
 
 
 async def init(noinput=False):
+
+    if not noinput:
+        msg = "".join(
+            [
+                f"This command will create a new database: 'myapp.db', ",
+                "any existing database will be DESTROYED...\n\nEnter 'yes' to continue.\n",
+            ]
+        )
+        confirm = input(msg)
+        if confirm != "yes":
+            sys.exit()
+
     with contextlib.suppress(FileNotFoundError):
         os.remove("myapp.db")
 
@@ -21,4 +34,5 @@ async def init(noinput=False):
 
 
 if __name__ == "__main__":
-    run_async(init())
+    noinput = "--noinput" in sys.argv
+    run_async(init(noinput=noinput))
