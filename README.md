@@ -4,12 +4,6 @@ An example of a basic [Starlette](https://github.com/encode/starlette) app using
 
 ## Setup
 
-You can run the project with Docker:
-
-```docker-compose up -d```
-
-OR
-
 ```
 # Setup the dev environment and install the dependencies
 ./scripts/setup
@@ -20,9 +14,16 @@ OR
 # Create the database
 python init_db.py
 
-# Run the app
+## Running
+
+### From the virtualenv
+```
 uvicorn myapp.app:app --debug
 ```
+
+### With docker
+```docker-compose up -d```
+
 
 ## GraphQL queries & mutations
 
