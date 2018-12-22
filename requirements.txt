@@ -1,0 +1,4 @@
+starlette
+graphene
+tortoise-orm
+uvicorn
