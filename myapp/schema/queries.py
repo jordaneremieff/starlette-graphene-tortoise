@@ -17,6 +17,3 @@ class Query(graphene.ObjectType):
     async def resolve_user(self, info, id):
         user = await User.get(id=id)
         return user
-
-
-schema = graphene.Schema(query=Query, mutation=Mutation)

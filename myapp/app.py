@@ -12,8 +12,8 @@ config = Config(".env")
 
 
 DEBUG = config("DEBUG", cast=bool, default=False)
-DB_URL = config("DB_URL", cast=str)
-DB_MODELS = config("DB_MODELS", cast=CommaSeparatedStrings)
+DATABASE_URL = config("DATABASE_URL", cast=str)
+APP_MODELS = config("APP_MODELS", cast=CommaSeparatedStrings)
 
 
 app = Starlette(debug=DEBUG)
@@ -22,7 +22,7 @@ app.add_route("/graphql", GraphQLApp(schema=schema, executor=AsyncioExecutor()))
 
 @app.on_event("startup")
 async def on_startup() -> None:
-    await Tortoise.init(db_url=DB_URL, modules={"models": DB_MODELS})
+    await Tortoise.init(db_url=DATABASE_URL, modules={"models": APP_MODELS})
 
 
 @app.on_event("shutdown")

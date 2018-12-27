@@ -9,8 +9,8 @@ from starlette.datastructures import CommaSeparatedStrings
 
 config = Config(".env")
 
-DB_URL = config("DB_URL", cast=str)
-DB_MODELS = config("DB_MODELS", cast=CommaSeparatedStrings)
+DATABASE_URL = config("DATABASE_URL", cast=str)
+APP_MODELS = config("APP_MODELS", cast=CommaSeparatedStrings)
 
 
 async def init(noinput=False):
@@ -29,7 +29,7 @@ async def init(noinput=False):
     with contextlib.suppress(FileNotFoundError):
         os.remove("myapp.db")
 
-    await Tortoise.init(db_url=DB_URL, modules={"models": DB_MODELS})
+    await Tortoise.init(db_url=DATABASE_URL, modules={"models": APP_MODELS})
     await Tortoise.generate_schemas()
 
 
